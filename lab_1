@@ -16,23 +16,46 @@ Want to change languages? Try the search bar up the top.
 
 int main() {
     
-    char msg[54] = "Microcontrollers are lots of fun!"; //len of 33
+    char msg[] = "Microcontrollers are lots of fun!"; //len of 33
     
-    
+    char feed[42+strlen(msg)];
     //printf("%i", strlen(msg));
     char queue[21]; //twenty chars plus null terminator;
     for(int i = 0; i < 20; i++){ //fill the queue with blank space;
         queue[i] = ' ';
     }
+    strcpy(feed, queue);
+    strncat(feed,msg, strlen(msg));
+    strncat(feed, queue, strlen(queue));
+    //strncat(msg, queue, strlen(queue)); //msg is now msg + queue (post padding)
     
-    strncat(msg, queue, strlen(queue)); //msg is now msg + queue (post padding)
+    //printf(feed);
+    int cursor;
+    int fwd = 1;
     
-    int padding_var = 19; 
+    while(fwd < (strlen(feed)-19)){
+        cursor = fwd;
+        //queue builder
+        for(int i = 0; i < 20; i++){
+            queue[i] = feed[cursor];
+            cursor++;
+        }
+        fwd++;
+        //printf("%i", cursor);
+        //printf(" ");
+      
+        printf(queue);
+        printf("\n");
+    }
+    
+    
+    
+    //int padding_var = 19; 
     
     //int cursor_start = 0;
-    int cursor = 0;
+    //int cursor = 0;
     
-    
+    /*
     while(padding_var != -1){
         //queue builder
         for(int i =0; i < 20; i++){ //queue HAS to be 20
@@ -44,8 +67,8 @@ int main() {
                 cursor++;
             }
         }
-        printf("%i", cursor);
-        printf(" ");
+        //printf("%i", cursor);
+        //printf(" ");
       
         printf(queue);
         printf("\n");
@@ -62,14 +85,14 @@ int main() {
             cursor++;
         }
         fwd++;
-        printf("%i", cursor);
-        printf(" ");
+        //printf("%i", cursor);
+        //printf(" ");
       
         printf(queue);
         printf("\n");
     }
     
-    
+    */
     
     //queue[19] = msg[0]; //20th char
     /*
