@@ -15,12 +15,58 @@ Want to change languages? Try the search bar up the top.
 #include <string.h>
 
 int main() {
-    //printf("Sum of x+y = %i", z);
-    char msg[34] = "Microcontrollers are lots of fun!"; //len of 33
+    
+    char msg[54] = "Microcontrollers are lots of fun!"; //len of 33
+
     //printf("%i", strlen(msg));
     char queue[21]; //twenty chars plus null terminator
     for(int i = 0; i < 20; i++){ //fill the queue with blank space 
         queue[i] = ' ';
+    }
+    
+    strncat(msg, queue, strlen(queue)); //msg is now msg + queue (post padding)
+    
+    int padding_var = 19; 
+    
+    //int cursor_start = 0;
+    int cursor = 0;
+    
+    
+    while(padding_var != -1){
+        
+        //queue builder
+        for(int i =0; i < 20; i++){ //queue HAS to be 20
+            if(i < padding_var){
+                queue[i] = ' ';
+            }
+            else{
+                queue[i] = msg[cursor];
+                cursor++;
+            }
+        }
+        printf("%i", cursor);
+        printf(" ");
+      
+        printf(queue);
+        printf("\n");
+        //cursor_start++;
+        cursor = 0;
+        padding_var--;
+    }
+    int fwd = 1;
+    
+    while(fwd < strlen(msg)){
+        cursor = fwd;
+        for(int i = 0; i < 20; i++){
+            queue[i] = msg[cursor];
+            cursor++;
+        }
+        fwd++;
+        printf("%i", cursor);
+        printf(" ");
+      
+        printf(queue);
+        printf("\n");
     }
     
     //queue[19] = msg[0]; //20th char
@@ -31,11 +77,14 @@ int main() {
     printf(temp);
     printf("\n");
     */
-    int start = 19;
-    int temp = 0;
-    int ctrl_counter = 0;
     
-    while(ctrl_counter < 20){
+    /*
+    int start = 19; //start point for msg to be read into queue
+    int temp = 0; //counter var for msg
+    int ctrl_counter = 0; //temporary debug flag
+    int temp_start = 0; //sorry
+    
+    while(start > -4){
         //queue builder
         //s, e; start and end
         for(int i = 0; i < 20; i++){
@@ -43,17 +92,23 @@ int main() {
                 queue[i] = ' ';
             }
             else{
-            queue[i] = msg[temp];
-            temp++;
+                if(start < 0){
+                    temp_start++;
+                }
+                queue[i] = msg[temp];
+                temp++;
             }
+            
         }
         printf(queue);
         printf("\n");
-        temp = 0;
+        temp = temp_start;
         start--;
         ctrl_counter++;
     }
     
+    
+    */
     
     
     
