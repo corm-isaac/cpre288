@@ -18,7 +18,6 @@ int main() {
     
     char msg[54] = "Microcontrollers are lots of fun!"; //len of 33
     
-    char temp[54];
     
     //printf("%i", strlen(msg));
     char queue[21]; //twenty chars plus null terminator;
@@ -26,11 +25,7 @@ int main() {
         queue[i] = ' ';
     }
     
-    strcpy(temp, queue);
-    
-    strncat(temp, msg, strlen(msg));
-    
-    strncat(temp, queue, strlen(queue)); //msg is now msg + queue (post padding)
+    strncat(msg, queue, strlen(queue)); //msg is now msg + queue (post padding)
     
     int padding_var = 19; 
     
@@ -60,7 +55,7 @@ int main() {
     }
     int fwd = 1;
     
-    while(fwd < strlen(msg)){
+    while(fwd < (strlen(msg)-19)){
         cursor = fwd;
         for(int i = 0; i < 20; i++){
             queue[i] = msg[cursor];
@@ -74,9 +69,7 @@ int main() {
         printf("\n");
     }
     
-    while(1){
-        
-    }
+    
     
     //queue[19] = msg[0]; //20th char
     /*
