@@ -1,39 +1,27 @@
-/* 
-Welcome to JDoodle!
 
-You can execute code here in 88 languages. Right now you’re in the C IDE.
-
-  1. Click the orange Execute button ▶ to execute the sample code below and see how it works.
-
-  2. Want help writing or debugging code? Type a query into JDroid on the right hand side ---------------->
-
-  3. Try the menu buttons on the left. Save your file, share code with friends and open saved projects.
-
-Want to change languages? Try the search bar up the top. 
-*/
-#include<stdio.h>
-#include <string.h>
-
-int main() {
-    
     char msg[54] = "Microcontrollers are lots of fun!"; //len of 33
-
+    
+    char temp[54];
+    
     //printf("%i", strlen(msg));
-    char queue[21]; //twenty chars plus null terminator
-    for(int i = 0; i < 20; i++){ //fill the queue with blank space 
+    char queue[21]; //twenty chars plus null terminator;
+    for(int i = 0; i < 20; i++){ //fill the queue with blank space;
         queue[i] = ' ';
     }
     
-    strncat(msg, queue, strlen(queue)); //msg is now msg + queue (post padding)
+    strcpy(temp, queue);
+    
+    strncat(temp, msg, strlen(msg));
+    
+    strncat(temp, queue, strlen(queue)); //msg is now msg + queue (post padding)
     
     int padding_var = 19; 
     
     //int cursor_start = 0;
     int cursor = 0;
     
-    
+    /*
     while(padding_var != -1){
-        
         //queue builder
         for(int i =0; i < 20; i++){ //queue HAS to be 20
             if(i < padding_var){
@@ -53,7 +41,8 @@ int main() {
         cursor = 0;
         padding_var--;
     }
-    int fwd = 1;
+    */
+    int fwd = 0;
     
     while(fwd < strlen(msg)){
         cursor = fwd;
@@ -68,61 +57,3 @@ int main() {
         printf(queue);
         printf("\n");
     }
-    
-    //queue[19] = msg[0]; //20th char
-    /*
-    char temp[21];
-    strcpy(temp, queue);
-    temp[19] = msg[0];
-    printf(temp);
-    printf("\n");
-    */
-    
-    /*
-    int start = 19; //start point for msg to be read into queue
-    int temp = 0; //counter var for msg
-    int ctrl_counter = 0; //temporary debug flag
-    int temp_start = 0; //sorry
-    
-    while(start > -4){
-        //queue builder
-        //s, e; start and end
-        for(int i = 0; i < 20; i++){
-            if(i < start){
-                queue[i] = ' ';
-            }
-            else{
-                if(start < 0){
-                    temp_start++;
-                }
-                queue[i] = msg[temp];
-                temp++;
-            }
-            
-        }
-        printf(queue);
-        printf("\n");
-        temp = temp_start;
-        start--;
-        ctrl_counter++;
-    }
-    
-    
-    */
-    
-    
-    
-    
-    
-    /*
-    int count = 0;
-    for(int i = 19; i > 0; i++){
-        queue[i] = msg[count];
-        count++;
-        printf(queue);
-        printf("\n");
-    }
-    */
-    //printf(queue);
-    
-}
